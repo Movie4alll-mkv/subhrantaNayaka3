@@ -41,6 +41,18 @@ async def _(e):
 async def _(e):
     await up(e)
 
+@bot.on(events.NewMessage(pattern="/setcode"))
+async def _(e):
+    if str(e.sender_id) not in OWNER and e.sender_id !=DEV:
+        return e.reply("**Sorry You're not An Authorised User!**")
+    await coding(e)
+
+@bot.on(events.NewMessage(pattern="/getcode"))
+async def _(e):
+    if str(e.sender_id) not in OWNER and e.sender_id !=DEV:
+        return e.reply("**Sorry You're not An Authorised User!**")
+    await getcode(e)
+
 
 @bot.on(events.NewMessage(pattern="/help"))
 async def _(e):
